@@ -46,9 +46,9 @@ def atualizar_livro(id):
         return jsonify({'erro': 'Livro não encontrado'}), 404
     livro.titulo = data['titulo']
     livro.autor = data['autor']
-    livro.ano = data.get('ano')
-    db. session. commit()
-    return jsonify({'mensagem': 'Livro atualizado com sucesso'})
+    livro.ano = data['ano']
+    db.session.commit()
+    return jsonify({'mensagem': 'Livro atualizado com sucesso'}), 200
 
 # Rota para deletar
 @app.route('/livros/<int:id>', methods=['DELETE'])
@@ -56,6 +56,6 @@ def deletar_livro(id):
     livro = Livro.query.get(id)
     if not livro:
         return jsonify({'erro': 'Livro não encontrado'}), 404
-    db. session.delete(livro)
-    db. session. commit()
-    return jsonify({'mensagem': 'Livro deletado'})
+    db.session.delete(livro)
+    db.session.commit()
+    return jsonify({'mensagem': 'Livro deletado'}), 200
