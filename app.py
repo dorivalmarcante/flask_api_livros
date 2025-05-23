@@ -40,8 +40,9 @@ def adicionar_livro():
 # Rota para atualizar
 @app.route('/livros/<int:id>', methods=['PUT'])
 def atualizar_livro(id):
+    id_certo = int(id)
     data = request.get_json()
-    livro = Livro.query.get(id)
+    livro = Livro.query.get(id_certo)
     if not livro:
         return jsonify({'erro': 'Livro não encontrado'}), 404
     livro.titulo = data['titulo']
