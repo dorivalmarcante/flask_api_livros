@@ -18,8 +18,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 # Criar as tabelas (executar uma vez)
-#@app.before_first_request
-#def create_tables():
 with app.app_context():
     db.create_all()
 
